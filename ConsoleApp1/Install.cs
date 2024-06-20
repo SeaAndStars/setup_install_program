@@ -141,7 +141,7 @@ public static class Install
     private static void HandleOsuOperations(string baseDirectory)
     {
         Console.WriteLine("osu! 相关操作");
-        string osuFolder = FindOsuFolderOnUsb();
+        string? osuFolder = FindOsuFolderOnUsb();  // 使用 nullable 类型
         if (osuFolder == null)
         {
             Console.WriteLine("未在任何驱动器上找到 osu 文件夹。退出。");
@@ -197,7 +197,7 @@ public static class Install
             string drivePath = $"{drive}:\\";
             if (Directory.Exists(drivePath))
             {
-                string? osuFolder = FindOsuFolder(drivePath);
+                string? osuFolder = FindOsuFolder(drivePath);  // 使用 nullable 类型
                 if (osuFolder != null)
                 {
                     return osuFolder;
@@ -229,6 +229,7 @@ public static class Install
         }
         return null;
     }
+
 
     private static void InstallGrlPackage(string baseDirectory)
     {
