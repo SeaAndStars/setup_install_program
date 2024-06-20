@@ -190,14 +190,14 @@ public static class Install
         RunCommand("move", $"\"{Path.Combine(programsDir, "osu\\*.osz")}\" \"{osuSongsDir}\"");
     }
 
-    private static string FindOsuFolderOnUsb()
+    private static string? FindOsuFolderOnUsb()
     {
         for (char drive = 'D'; drive <= 'Z'; drive++)
         {
             string drivePath = $"{drive}:\\";
             if (Directory.Exists(drivePath))
             {
-                string osuFolder = FindOsuFolder(drivePath);
+                string? osuFolder = FindOsuFolder(drivePath);
                 if (osuFolder != null)
                 {
                     return osuFolder;
@@ -207,7 +207,7 @@ public static class Install
         return null;
     }
 
-    private static string FindOsuFolder(string drive)
+    private static string? FindOsuFolder(string drive)
     {
         try
         {
